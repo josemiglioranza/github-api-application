@@ -19,6 +19,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="16dp"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_middle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.6"/>
+
     <View
         android:id="@+id/top_background"
         android:layout_width="match_parent"
@@ -39,23 +46,26 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_name_repository"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="archtecture-samples"
+        tools:text="archtecture-samples wererferfwergwetwegrt"
+        android:ellipsize="end"
+        android:maxLines="1"
         android:fontFamily="@font/roboto_m"
         android:textColor="@color/white"
         android:textSize="16sp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="@id/guide_begin"
+        app:layout_constraintEnd_toEndOf="@id/guide_middle"
         app:layout_constraintBottom_toBottomOf="@id/top_background"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/star_repository"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
         app:srcCompat="@drawable/star_repository"
-        app:layout_constraintStart_toEndOf="@id/txt_name_repository"
-        app:layout_constraintEnd_toEndOf="@id/top_background"
+        app:layout_constraintStart_toEndOf="@id/guide_middle"
         app:layout_constraintBottom_toBottomOf="@id/top_background"
         app:layout_constraintTop_toTopOf="parent"/>
 
@@ -113,5 +123,17 @@
         app:layout_constraintStart_toEndOf="@id/img_repository"
         app:layout_constraintEnd_toStartOf="@id/guide_end"
         app:layout_constraintTop_toTopOf="@id/img_repository"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/link_repository"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Acessar repositório ->"
+        android:textColor="@color/link"
+        android:fontFamily="@font/roboto_m"
+        android:textSize="14sp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@id/img_repository"
+        app:layout_constraintBottom_toBottomOf="@id/img_repository"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
