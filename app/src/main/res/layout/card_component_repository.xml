@@ -63,7 +63,7 @@
         android:id="@+id/star_repository"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_marginStart="16dp"
         app:srcCompat="@drawable/star_repository"
         app:layout_constraintStart_toEndOf="@id/guide_middle"
         app:layout_constraintBottom_toBottomOf="@id/top_background"
@@ -114,11 +114,14 @@
         app:layout_constraintBottom_toBottomOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_repository_description"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_l"
         android:textSize="12sp"
         android:layout_marginStart="16dp"
+        android:ellipsize="end"
+        android:maxLines="3"
         tools:text="Este é um repositório destinado para salvar imagens e códigos de animais, para que possa ser realizada uma API que será publicada"
         app:layout_constraintStart_toEndOf="@id/img_repository"
         app:layout_constraintEnd_toStartOf="@id/guide_end"
