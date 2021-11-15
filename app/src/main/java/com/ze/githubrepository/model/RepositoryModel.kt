@@ -16,5 +16,5 @@ data class Items(
 
 data class Person(
     @SerializedName("avatar_url") val photoPath: String,
-    @SerializedName("login") val owner: String
+    @SerializedName("login") val name: String
 )
