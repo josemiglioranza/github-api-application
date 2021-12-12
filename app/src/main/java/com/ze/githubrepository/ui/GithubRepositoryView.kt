@@ -20,7 +20,7 @@ class GithubRepositoryView(context: Context) : ConstraintLayout(context) {
     init {
         inflate(context, R.layout.card_component_repository, this)
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        setPadding(3, 0, 0, 0)
+        setPadding(3, 40, 3, 40)
     }
 
     fun setup(repository: Github){
