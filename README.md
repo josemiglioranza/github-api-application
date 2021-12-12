@@ -17,8 +17,8 @@ Projeto com o intuito de listar os repositórios que utilizam a linguagem Kotlin
   - Testes :white_check_mark:
 
 ### Arquitetura Android / Jetpack
-  - ViewModel
-  - LiveData
+  - ViewModel :white_check_mark:
+  - LiveData :white_check_mark:
   - LifeCycle
   - Navigation
 
