@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ze.githubrepository.R
 import com.ze.githubrepository.adapters.GithubRepositoryAdapter
 import com.ze.githubrepository.connection.CallsViewModel
+import com.ze.githubrepository.lifecycle.ApplicationLogger
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +21,8 @@ class MainActivity : AppCompatActivity() {
 
         initializeVariables()
         callRepositories()
+
+        lifecycle.addObserver(ApplicationLogger())
     }
 
     private fun initializeVariables(){
