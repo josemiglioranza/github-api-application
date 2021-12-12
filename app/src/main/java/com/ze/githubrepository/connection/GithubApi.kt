@@ -7,6 +7,6 @@ import retrofit2.http.GET
 
 interface GithubApi {
 
-    @GET("/search/repositories?q=language:kotlin&sort=stars")
+    @GET("/search/repositories?q=language:java&sort=stars")
     fun getRepositories(): Call<Items>
 }
