@@ -9,13 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.ze.githubrepository.R
 import com.ze.githubrepository.model.Github
 import com.ze.githubrepository.model.Items
+import com.ze.githubrepository.ui.GithubRepositoryNameView
 import com.ze.githubrepository.ui.GithubRepositoryView
 
 const val WITH_JAVA = R.layout.card_component_owner
-const val WITHOUT_JAVA = R.layout.card_component_repository
+const val WITHOUT_JAVA = R.layout.card_repository_name
 
 class GithubRepositoryAdapter(
-    githubList: List<Github>
+    private val githubList: List<Github>,
+    private val onClick : (Github) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val listJavaItems = mutableListOf<ViewTypeSample>()
@@ -32,7 +34,7 @@ class GithubRepositoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         if (viewType == WITHOUT_JAVA) {
-            ViewHolderRepository(GithubRepositoryView(parent.context))
+            ViewHolderRepository(GithubRepositoryNameView(parent.context), onClick)
         } else {
             ViewHolderOwner(parent.inflate(R.layout.card_component_owner))
         }
@@ -48,9 +50,12 @@ class GithubRepositoryAdapter(
 
     override fun getItemViewType(position: Int) = listJavaItems[position].viewType
 
-    class ViewHolderRepository(private val view: GithubRepositoryView) : RecyclerView.ViewHolder(view) {
+    class ViewHolderRepository(private val view: GithubRepositoryNameView, private val onClick: (Github) -> Unit) : RecyclerView.ViewHolder(view) {
         fun bind(githubItem: Github) {
-            view.setup(githubItem)
+            view.setupNameRepositoryView(githubItem)
+            view.setUpClickToDetail {
+                onClick(githubItem)
+            }
         }
     }
 

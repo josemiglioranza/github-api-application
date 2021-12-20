@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
+    android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -26,50 +25,33 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.6"/>
+        app:layout_constraintGuide_percent="0.33"/>
 
-    <View
-        android:id="@+id/top_background"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:background="@drawable/top_background_red"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide_middle_vertical"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1"/>
 
-    <View
-        android:id="@+id/bottom_background"
-        android:layout_width="match_parent"
-        android:layout_height="122dp"
-        android:background="@drawable/bottom_background_white"
-        app:layout_constraintTop_toBottomOf="@id/top_background"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/txt_name_repository"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        tools:text="archtecture-samples wererferfwergwetwegrt"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:fontFamily="@font/roboto_m"
-        android:textColor="@color/white"
-        android:textSize="16sp"
+        app:title="Repositório da Ca"
+        app:navigationIcon="@drawable/ic_arrow_back"
+        app:titleTextColor="@color/black"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="@id/guide_begin"
-        app:layout_constraintEnd_toEndOf="@id/guide_middle"
-        app:layout_constraintBottom_toBottomOf="@id/top_background"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/star_repository"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_height="20dp"
         app:srcCompat="@drawable/star_repository"
         app:layout_constraintStart_toEndOf="@id/guide_middle"
-        app:layout_constraintBottom_toBottomOf="@id/top_background"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="@id/guide_middle_vertical"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/star_text"
@@ -77,22 +59,21 @@
         android:layout_height="wrap_content"
         android:text="1k"
         android:fontFamily="@font/roboto_m"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_marginStart="5dp"
         app:layout_constraintStart_toEndOf="@id/star_repository"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/top_background"/>
+        app:layout_constraintTop_toTopOf="@id/guide_middle_vertical" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/fork_repository"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         app:srcCompat="@drawable/fork_repository"
-        android:layout_marginEnd="5dp"
-        app:layout_constraintEnd_toStartOf="@id/fork_text"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/top_background"/>
+        android:tint="@color/black"
+        android:layout_marginStart="32dp"
+        app:layout_constraintStart_toEndOf="@id/star_text"
+        app:layout_constraintTop_toTopOf="@id/guide_middle_vertical" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/fork_text"
@@ -100,20 +81,20 @@
         android:layout_height="wrap_content"
         android:text="1k"
         android:fontFamily="@font/roboto_m"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintEnd_toStartOf="@id/guide_end"
-        app:layout_constraintTop_toTopOf="@id/top_background"
-        app:layout_constraintBottom_toBottomOf="@id/top_background"/>
+        android:layout_marginStart="5dp"
+        app:layout_constraintStart_toEndOf="@id/fork_repository"
+        app:layout_constraintTop_toTopOf="@id/guide_middle_vertical" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/img_repository"
-        android:layout_width="75dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="16dp"
         app:srcCompat="@drawable/ic_launcher_background"
         app:layout_constraintStart_toStartOf="@id/guide_begin"
-        app:layout_constraintTop_toBottomOf="@id/top_background"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_repository_description"
@@ -121,24 +102,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_l"
         android:textSize="12sp"
-        android:layout_marginStart="16dp"
         android:ellipsize="end"
         android:maxLines="3"
+        android:layout_marginTop="16dp"
         tools:text="Este é um repositório destinado para salvar imagens e códigos de animais, para que possa ser realizada uma API que será publicada"
-        app:layout_constraintStart_toEndOf="@id/img_repository"
+        app:layout_constraintStart_toEndOf="@id/guide_middle"
         app:layout_constraintEnd_toStartOf="@id/guide_end"
-        app:layout_constraintTop_toTopOf="@id/img_repository"/>
+        app:layout_constraintTop_toBottomOf="@id/star_repository"/>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/link_repository"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acessar repositório ->"
-        android:textColor="@color/link"
-        android:fontFamily="@font/roboto_m"
-        android:textSize="14sp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@id/img_repository"
-        app:layout_constraintBottom_toBottomOf="@id/img_repository"/>
-
-</merge>
+</androidx.constraintlayout.widget.ConstraintLayout>
