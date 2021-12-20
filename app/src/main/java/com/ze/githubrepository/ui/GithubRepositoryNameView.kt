@@ -23,9 +23,9 @@ class GithubRepositoryNameView(context: Context) : ConstraintLayout(context) {
         nameRepository.text = github.name
     }
 
-    fun setUpClickToDetail(onClick: () -> Unit){
+    fun setUpClickToDetail(github:Github, onClick: (Github) -> Unit){
         linkToDatails.setOnClickListener {
-            onClick()
+            onClick(github)
         }
     }
 }

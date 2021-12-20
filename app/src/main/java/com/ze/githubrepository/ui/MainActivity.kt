@@ -1,6 +1,5 @@
 package com.ze.githubrepository.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
@@ -11,6 +10,7 @@ import com.ze.githubrepository.R
 import com.ze.githubrepository.adapters.GithubRepositoryAdapter
 import com.ze.githubrepository.connection.CallsViewModel
 import com.ze.githubrepository.lifecycle.ApplicationLogger
+import com.ze.githubrepository.model.Github
 
 class MainActivity : Fragment(R.layout.activity_main) {
 
@@ -26,19 +26,17 @@ class MainActivity : Fragment(R.layout.activity_main) {
         lifecycle.addObserver(ApplicationLogger())
     }
 
-    private fun initializeVariables(view: View){
+    private fun initializeVariables(view: View) {
         recycler = view.findViewById(R.id.recycler_view)
         recycler.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun callRepositories(){
+    private fun callRepositories() {
         viewModel.fetchRepositories()
         viewModel.githubReponse.observe(viewLifecycleOwner) {
-            recycler.adapter = GithubRepositoryAdapter(it)
+            recycler.adapter = GithubRepositoryAdapter(it) {
+
+            }
         }
-    }
-
-    private fun goToFragmentDetails(){
-
     }
 }

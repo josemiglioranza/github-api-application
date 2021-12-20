@@ -34,14 +34,14 @@ class GithubRepositoryAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder =
         if (viewType == WITHOUT_JAVA) {
-            ViewHolderRepository(GithubRepositoryNameView(parent.context), onClick)
+            ViewHolderRepository(GithubRepositoryNameView(parent.context))
         } else {
             ViewHolderOwner(parent.inflate(R.layout.card_component_owner))
         }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
-            is ViewHolderRepository -> holder.bind((listJavaItems[position] as RepositoryViewType).repository)
+            is ViewHolderRepository -> holder.bind((listJavaItems[position] as RepositoryViewType).repository, onClick)
             is ViewHolderOwner -> holder.bind((listJavaItems[position] as JavaViewType).repository)
         }
     }
@@ -50,12 +50,10 @@ class GithubRepositoryAdapter(
 
     override fun getItemViewType(position: Int) = listJavaItems[position].viewType
 
-    class ViewHolderRepository(private val view: GithubRepositoryNameView, private val onClick: (Github) -> Unit) : RecyclerView.ViewHolder(view) {
-        fun bind(githubItem: Github) {
+    class ViewHolderRepository(private val view: GithubRepositoryNameView) : RecyclerView.ViewHolder(view) {
+        fun bind(githubItem: Github, onClick: (Github) -> Unit) {
             view.setupNameRepositoryView(githubItem)
-            view.setUpClickToDetail {
-                onClick(githubItem)
-            }
+            view.setUpClickToDetail(githubItem, onClick)
         }
     }
 
