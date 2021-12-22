@@ -6,7 +6,7 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.ze.githubrepository.R
-import com.ze.githubrepository.model.Github
+import com.ze.githubrepository.model.RepositoryModel
 
 class GithubRepositoryNameView(context: Context) : ConstraintLayout(context) {
 
@@ -19,11 +19,11 @@ class GithubRepositoryNameView(context: Context) : ConstraintLayout(context) {
         setPadding(16, 40, 10, 0)
     }
 
-    fun setupNameRepositoryView(github: Github) {
+    fun setupNameRepositoryView(github: RepositoryModel.Github) {
         nameRepository.text = github.name
     }
 
-    fun setUpClickToDetail(github:Github, onClick: (Github) -> Unit){
+    fun setUpClickToDetail(github: RepositoryModel.Github, onClick: (RepositoryModel.Github) -> Unit){
         linkToDatails.setOnClickListener {
             onClick(github)
         }

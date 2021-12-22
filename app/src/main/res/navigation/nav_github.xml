@@ -3,22 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_github"
-    app:startDestination="@id/main_fragment"
-    >
+    app:startDestination="@id/main_fragment">
 
     <fragment
         android:id="@+id/main_fragment"
-        android:name="com.ze.githubrepository.ui.MainActivity"
-        tools:layout="@layout/activity_main">
+        android:name="com.ze.githubrepository.ui.NavigationFragment"
+        tools:layout="@layout/navigation_fragment">
 
         <action
             android:id="@+id/action_main_fragment_to_details_fragment"
             app:destination="@id/details_fragment" />
+
     </fragment>
 
     <fragment
         android:id="@+id/details_fragment"
         android:name="com.ze.githubrepository.ui.GithubRepositoryView"
-        tools:layout="@layout/card_component_repository"/>
+        tools:layout="@layout/card_component_repository">
+
+        <argument
+            android:name="githubItem"
+            app:argType="com.ze.githubrepository.model.RepositoryModel$Github"/>
+    </fragment>
 
 </navigation>

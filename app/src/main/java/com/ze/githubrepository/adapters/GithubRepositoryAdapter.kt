@@ -2,22 +2,19 @@ package com.ze.githubrepository.adapters
 
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.inflate
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ze.githubrepository.R
-import com.ze.githubrepository.model.Github
-import com.ze.githubrepository.model.Items
+import com.ze.githubrepository.model.RepositoryModel
 import com.ze.githubrepository.ui.GithubRepositoryNameView
-import com.ze.githubrepository.ui.GithubRepositoryView
 
 const val WITH_JAVA = R.layout.card_component_owner
 const val WITHOUT_JAVA = R.layout.card_repository_name
 
 class GithubRepositoryAdapter(
-    private val githubList: List<Github>,
-    private val onClick : (Github) -> Unit
+    githubList: List<RepositoryModel.Github>,
+    private val onClick : (RepositoryModel.Github) -> Unit
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val listJavaItems = mutableListOf<ViewTypeSample>()
@@ -51,22 +48,24 @@ class GithubRepositoryAdapter(
     override fun getItemViewType(position: Int) = listJavaItems[position].viewType
 
     class ViewHolderRepository(private val view: GithubRepositoryNameView) : RecyclerView.ViewHolder(view) {
-        fun bind(githubItem: Github, onClick: (Github) -> Unit) {
+        fun bind(githubItem: RepositoryModel.Github, onClick: (RepositoryModel.Github) -> Unit) {
             view.setupNameRepositoryView(githubItem)
-            view.setUpClickToDetail(githubItem, onClick)
+            view.setUpClickToDetail(githubItem){
+                onClick(githubItem)
+            }
         }
     }
 
     class ViewHolderOwner(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(githubItem: Github) {
+        fun bind(githubItem: RepositoryModel.Github) {
             itemView.findViewById<TextView>(R.id.txt_owner).text = githubItem.owner.name
         }
     }
 }
 
 abstract class ViewTypeSample(val viewType: Int)
-class JavaViewType(val repository: Github) : ViewTypeSample(WITH_JAVA)
-class RepositoryViewType(val repository: Github) : ViewTypeSample(WITHOUT_JAVA)
+class JavaViewType(val repository: RepositoryModel.Github) : ViewTypeSample(WITH_JAVA)
+class RepositoryViewType(val repository: RepositoryModel.Github) : ViewTypeSample(WITHOUT_JAVA)
 
 fun ViewGroup.inflate(layout: Int): View {
     return LayoutInflater.from(context).inflate(layout, this, false)
