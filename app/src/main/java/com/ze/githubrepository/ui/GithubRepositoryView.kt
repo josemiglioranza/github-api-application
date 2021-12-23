@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.ze.githubrepository.R
 import com.ze.githubrepository.model.RepositoryModel
 
-class GithubRepositoryView() : Fragment(R.layout.card_component_repository) {
+class GithubRepositoryView : Fragment(R.layout.card_component_repository) {
 
     private val navArgs: GithubRepositoryViewArgs by navArgs()
 

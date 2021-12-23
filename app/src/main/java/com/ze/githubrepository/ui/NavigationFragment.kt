@@ -31,7 +31,7 @@ class NavigationFragment : Fragment(R.layout.navigation_fragment) {
     }
 
     private fun callRepositories() {
-        viewModel.fetchRepositories()
+        viewModel.fetchRepository2()
         viewModel.githubReponse.observe(this) {
             recycler.adapter = GithubRepositoryAdapter(it) { github ->
                 findNavController(this).navigate(
