@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ze.githubrepository.cache.CacheLocal
+import com.ze.githubrepository.extensions.doRequest
 import com.ze.githubrepository.extensions.makeAsyncOperation
 import com.ze.githubrepository.model.RepositoryModel
 import retrofit2.Call
@@ -55,13 +56,21 @@ class CallsViewModel : ViewModel() {
 //        }
 //    }
 
+//    fun fetchRepository2() {
+//        build.getRepositories().makeAsyncOperation(
+//            REPOSITORY_KEY,
+//            CacheLocal.githubRepository,
+//            onSuccess = {
+//                _githubResponse.postValue(it.items)
+//            }
+//        )
+//    }
+
     fun fetchRepository2() {
-        build.getRepositories().makeAsyncOperation(
+        build.getRepositories().doRequest(
             REPOSITORY_KEY,
-            CacheLocal.githubRepository,
-            onSuccess = {
-                _githubResponse.postValue(it.items)
-            }
+            RepositoryModel.Items::class.java,
+            onSuccess = { _githubResponse.postValue(it.items) }
         )
     }
 }
