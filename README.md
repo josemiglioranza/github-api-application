@@ -20,10 +20,10 @@ Projeto com o intuito de listar os repositórios que utilizam a linguagem Kotlin
   - ViewModel :white_check_mark:
   - LiveData :white_check_mark:
   - LifeCycle :white_check_mark:
-  - Navigation
+  - Navigation :white_check_mark:
 
 ### Persistência
-  - InMemory
+  - Cache em memória 
   - Shared Preferences
   - Room
   
