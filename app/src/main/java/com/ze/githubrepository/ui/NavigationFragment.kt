@@ -3,19 +3,24 @@ package com.ze.githubrepository.ui
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ze.githubrepository.R
 import com.ze.githubrepository.adapters.GithubRepositoryAdapter
 import com.ze.githubrepository.connection.CallsViewModel
+import com.ze.githubrepository.connection.GithubDatabase
+import com.ze.githubrepository.connection.RepositoryViewModelFactory
 import com.ze.githubrepository.lifecycle.ApplicationLogger
 
 class NavigationFragment : Fragment(R.layout.navigation_fragment) {
 
     private lateinit var recycler: RecyclerView
-    private val viewModel by lazy { ViewModelProvider(this).get(CallsViewModel::class.java) }
+
+    private val viewModel : CallsViewModel by viewModels {
+        RepositoryViewModelFactory(GithubDatabase.getDatabase(requireContext()).githubDao())
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

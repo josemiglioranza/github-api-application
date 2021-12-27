@@ -5,6 +5,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.marginBottom
 import com.ze.githubrepository.R
 import com.ze.githubrepository.model.RepositoryModel
 
@@ -17,6 +18,7 @@ class GithubRepositoryNameView(context: Context) : ConstraintLayout(context) {
         inflate(context, R.layout.card_repository_name, this)
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         setPadding(16, 40, 10, 0)
+
     }
 
     fun setupNameRepositoryView(github: RepositoryModel.Github) {

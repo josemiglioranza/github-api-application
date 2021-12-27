@@ -1,6 +1,7 @@
 package com.ze.githubrepository.model
 
 import android.os.Parcelable
+import androidx.room.Entity
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -13,7 +14,18 @@ class RepositoryModel{
         @SerializedName("stargazers_count") val numberOfWatchers: Long,
         @SerializedName("owner") val owner: Person,
         @SerializedName("description") val descricao: String
-    ) : Parcelable
+    ) : Parcelable {
+        constructor(repositoryEntity: RepositoryEntity): this(
+            name = repositoryEntity.name,
+            descricao = repositoryEntity.descricao,
+            numberOfForks = repositoryEntity.numberOfForks,
+            numberOfWatchers = repositoryEntity.numberOfWatchers,
+            owner = Person(
+                photoPath = repositoryEntity.photoPath,
+                name = repositoryEntity.ownerName
+            )
+        )
+    }
 
     data class Items(
         @SerializedName("items") val items: List<Github>
