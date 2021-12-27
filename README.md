@@ -24,6 +24,6 @@ Projeto com o intuito de listar os repositórios que utilizam a linguagem Kotlin
 
 ### Persistência
   - Cache em memória :white_check_mark:
-  - Shared Preferences
+  - Shared Preferences :white_check_mark:
   - Room
   
