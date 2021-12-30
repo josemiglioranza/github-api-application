@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.ze.githubrepository.dao.GithubDao
 import com.ze.githubrepository.model.RepositoryEntity
+import kotlinx.coroutines.internal.synchronized
 
 @Database(entities = [RepositoryEntity::class], version = 1, exportSchema = false)
 abstract class GithubDatabase : RoomDatabase() {
@@ -17,7 +18,7 @@ abstract class GithubDatabase : RoomDatabase() {
         var INSTANCE: GithubDatabase? = null
 
         fun getDatabase(context: Context): GithubDatabase {
-            synchronized(true) {
+            kotlin.synchronized (true) {
                 return Room.databaseBuilder(
                     context.applicationContext,
                     GithubDatabase::class.java,
